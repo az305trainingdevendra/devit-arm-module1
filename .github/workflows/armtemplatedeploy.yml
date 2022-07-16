@@ -51,7 +51,7 @@ jobs:
           subscriptionId: cf356559-447f-4ef5-a596-5843ea2a66de
           template: ./arm-templates/virtualmachine.json
           parameters: 
-            adminPassword="kafka-demo-123!"
+            adminPassword={{secrets.UBUNTU_ADMIN_PASSWORD}}
 
           deploymentMod: incremental
 
