@@ -22,7 +22,7 @@ jobs:
         uses: Azure/cli@v1
         with:
           scope: subscription
-          subscriptionId: 4d0243f5-b1f4-4bd0-91bb-ce6481e6e810
+          subscriptionId: cf356559-447f-4ef5-a596-5843ea2a66de
           region: East US
           template: ./arm-templates/resourcegroup.json
           deploymentName: rg-githubactions
