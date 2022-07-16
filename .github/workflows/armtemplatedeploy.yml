@@ -35,6 +35,6 @@ jobs:
           parameters: 
             ./arm-templates/storageaccount.parameters.json
             storageAccountName=globostnkg002
-            location="East US"
+            location="Australia East"
 
           deploymentMod: incremental
