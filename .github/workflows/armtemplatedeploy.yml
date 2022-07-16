@@ -43,4 +43,16 @@ jobs:
 
           deploymentMod: incremental
 
-      - run: echo ${{ steps.storageAccountDeploy.outputs.BlobUri }}
+      - name: Deploy virtual Machine
+        uses: Azure/arm-deploy@v1
+        with:
+          scope: resourcegroup
+          resourcegroupName: rg-githubactions
+          subscriptionId: cf356559-447f-4ef5-a596-5843ea2a66de
+          template: ./arm-templates/virtualmachine.json
+          parameters: 
+            adminPassword="kafka-demo-123!"
+
+          deploymentMod: incremental
+
+      
