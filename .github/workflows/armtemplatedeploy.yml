@@ -5,6 +5,10 @@ on:
     branches:
       - main
   workflow_dispatch:
+env:
+  resource_group_name: rg-githubactions
+  location: East US
+  subscriptionId: cf356559-447f-4ef5-a596-5843ea2a66de
 
 jobs:
   armDeploy:
@@ -20,26 +24,26 @@ jobs:
         uses: Azure/arm-deploy@v1
         with:
           scope: subscription
-          subscriptionId: cf356559-447f-4ef5-a596-5843ea2a66de
+          subscriptionId: ${{ env.subscriptionId }}
           region: East US
           template: ./arm-templates/resourcegroup.json
           parameters:
-            location="East US"
-            resourceGroupName=rg-githubactions
-          deploymentName: rg-githubactions
+            location=${{ env.location }}
+            resourceGroupName=${{ env.resource_group_name }}
+          deploymentName: ${{ env.resource_group_name }}
       
       - name: Deploy Storage Account
         id: storageAccountDeploy
         uses: Azure/arm-deploy@v1
         with:
           scope: resourcegroup
-          resourcegroupName: rg-githubactions
-          subscriptionId: cf356559-447f-4ef5-a596-5843ea2a66de
+          resourcegroupName: ${{ env.resource_group_name }}
+          subscriptionId: ${{ env.subscriptionId }}
           template: ./arm-templates/storageaccount.json
           parameters: 
             sku=Standard_LRS
             storageAccountName=globostnkg002
-            location="East US"
+            location=${{ env.location }}
 
           deploymentMod: incremental
 
@@ -47,12 +51,12 @@ jobs:
         uses: Azure/arm-deploy@v1
         with:
           scope: resourcegroup
-          resourcegroupName: rg-githubactions
-          subscriptionId: cf356559-447f-4ef5-a596-5843ea2a66de
+          resourcegroupName: ${{ env.resource_group_name }}
+          subscriptionId: ${{ env.subscriptionId }}
           template: ./arm-templates/virtualmachine.json
           parameters: 
             adminPassword={{secrets.UBUNTU_ADMIN_PASSWORD}}
-
+            location=${{ env.location }}
           deploymentMod: incremental
 
       

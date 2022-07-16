@@ -7,6 +7,12 @@
             "metadata": {
                 "description": "Enter the password for the admin account on this machine"
             }
+        },
+        "location": {
+            "type": "string",
+            "metadata": {
+                "description": "Enter the location to deploy the resources to"
+            }
         }
     },
     "functions": [],
@@ -17,7 +23,7 @@
             "name": "ubuntuVM1-nsg",
             "type": "Microsoft.Network/networkSecurityGroups",
             "apiVersion": "2020-11-01",
-            "location": "[resourceGroup().location]",
+            "location": "[parameters('location')]",
             "properties": {
                 "securityRules": [
                     {
