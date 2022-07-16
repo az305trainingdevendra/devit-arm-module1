@@ -28,7 +28,7 @@ jobs:
           region: East US
           template: ./arm-templates/resourcegroup.json
           parameters:
-            location=${{ env.location }}
+            location="${{ env.location }}"
             resourceGroupName=${{ env.resource_group_name }}
           deploymentName: ${{ env.resource_group_name }}
       
@@ -43,7 +43,7 @@ jobs:
           parameters: 
             sku=Standard_LRS
             storageAccountName=globostnkg002
-            location=${{ env.location }}
+            location="${{ env.location }}"
 
           deploymentMod: incremental
 
@@ -56,7 +56,7 @@ jobs:
           template: ./arm-templates/virtualmachine.json
           parameters: 
             adminPassword={{secrets.UBUNTU_ADMIN_PASSWORD}}
-            location=${{ env.location }}
+            location="${{ env.location }}"
           deploymentMod: incremental
 
       
