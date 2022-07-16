@@ -15,11 +15,9 @@ jobs:
         uses: Azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
+          
       - name: Deploy Azure Resource Manager (ARM) Template
         uses: Azure/arm-deploy@v1
-
-      - name: Deploy Resource Group rg-githubactions with AZ CLI
-        uses: Azure/cli@v1
         with:
           scope: subscription
           subscriptionId: cf356559-447f-4ef5-a596-5843ea2a66de
