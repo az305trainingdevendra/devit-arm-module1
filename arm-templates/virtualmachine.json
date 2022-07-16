@@ -12,6 +12,7 @@
     "functions": [],
     "variables": {},
     "resources": [
+        
         {
             "name": "ubuntuVM1-nsg",
             "type": "Microsoft.Network/networkSecurityGroups",
@@ -114,7 +115,7 @@
                 "storageProfile": {
                     "imageReference": {
                         "publisher": "Canonical",
-                        "offer": "kafka-demo-123!",
+                        "offer": "UbuntuServer",
                         "sku": "16.04-LTS",
                         "version": "latest"
                     },
