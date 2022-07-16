@@ -34,10 +34,15 @@
             "location": "[resourceGroup().location]",
             "kind": "StorageV2",
             "sku": {
-                "name": "Premium_LRS",
-                "tier": "Premium"
+                "name": "Standard_LRS",
+                "tier": "Standard"
             }
         }
     ],
-    "outputs": {}
+    "outputs": {
+        "BlobUri": {
+            "type": "string",
+            "value": "[reference(resourceId('Microsoft.Storage/storageAccounts',parameters('storageAccountName'))).primaryEndPoints.blob]"
+        }
+    }
 }
